@@ -1,3 +1,182 @@
-body {
-    background-color: skyblue;
+/* Dark Modern Color Palette */
+:root {
+    /* Base background colors */
+    --bg-primary: #131316;
+    --bg-secondary: #1A1A1D;
+
+    /* Accent colors */
+    --accent: #A64D79;
+    --accent-dark: #6A1E55;
+    --highlight: #48CFCB;
+    --highlight-dark: #229799;
+
+    /* Text */
+    --text-color: #e0e0e0;
+}
+
+/* Background Classes */
+.bg-1 {
+    background-color: var(--bg-primary) !important;
+}
+
+.bg-2 {
+    background-color: var(--bg-secondary) !important;
+}
+
+.gradient-circular {
+    background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+.bg-accent {
+    background-color: var(--accent) !important;
+}
+
+.bg-highlight {
+    background-color: var(--highlight) !important;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+/* Border Classes */
+.border-accent {
+    border-color: var(--accent) !important;
+}
+
+.border-highlight {
+    border-color: var(--highlight) !important;
+}
+
+.no-border {
+    border: none !important;
+}
+
+/* Text Classes */
+.text-light {
+    color: var(--text-color) !important;
+}
+
+.text-accent {
+    color: var(--accent) !important;
+}
+
+.text-highlight {
+    color: var(--highlight) !important;
+}
+
+.text-mute {
+    color: #b9b6b9 !important;
+}
+
+/* Button Styling */
+.button-stylized {
+    background-color: var(--accent) !important;
+    border: 1px solid var(--accent-dark) !important;
+    color: var(--bg-primary) !important;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.button-stylized:hover {
+    background-color: var(--accent-dark) !important;
+    border-color: var(--accent) !important;
+    color: var(--bg-primary) !important;
+}
+
+/* Typography Helpers */
+.font-weight-bold {
+    font-weight: bold !important;
+}
+
+.font-weight-normal {
+    font-weight: normal !important;
+}
+
+/* Layout and Global Styles */
+body,
+html {
+    background-color: var(--bg-primary);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Example container spacing */
+.container {
+    padding: 1rem;
+}
+
+/* Footer (if needed) */
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+}
+
+/* Sidebar Styling */
+#sidebar-wrapper {
+    width: 320px; /* Increased sidebar width */
+    min-height: 100vh;
+    background-color: var(--bg-secondary);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+#sidebar-wrapper .sidebar-heading {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    padding: 1.5rem 1rem;
+    background: var(--accent);
+    color: var(--bg-primary);
+}
+#sidebar-wrapper .list-group-item {
+    border: none;
+    background: transparent;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+    padding: 0.75rem 1rem;
+}
+#sidebar-wrapper .list-group-item:hover {
+    background: var(--accent-dark);
+}
+
+/* Page Content Styling */
+#page-content-wrapper {
+    flex-grow: 1;
+    padding: 2rem;
+}
+.container-fluid {
+    padding: 1rem;
+}
+  
+table.table.bg-2 {
+    background-color: var(--bg-secondary) !important;
+}
+
+table.table th, table.table td {
+    color: var(--text-color) !important;
+}
+
+.table {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--accent-dark) !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--bg-primary) !important;
+}
+
+.table th, .table td {
+    border-color: var(--highlight-dark) !important;
+}
+
+thead.bg-accent {
+    background-color: var(--accent) !important;
 }

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User List{% endblock %}
+
+{% block body %}
+    <div class="container mt-5 bg-transparent text-light">
+        <h1 class="text-center mb-4 text-accent">User List</h1>
+
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+
+        {% if is_granted('USER_ADD') %}
+            <a href="{{ path('app_user_create') }}" class="btn button-stylized mb-3">Add User</a>
+        {% endif %}
+
+        <div class="table-responsive">
+            <table class="table bg-transparent text-light">
+                <thead class="bg-accent text-light">
+                    <tr>
+                        <th class="bg-transparent">Email</th>
+                        <th class="bg-transparent">Roles</th>
+                        <th class="bg-transparent">Last Name</th>
+                        <th class="bg-transparent">First Name</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th class="bg-transparent">Actions</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td class="text-highlight bg-transparent">{{ user.email }}</td>
+                            <td class="text-mute bg-transparent">{{ user.roles|join(', ') }}</td>
+                            <td class="text-light bg-transparent">{{ user.lastname }}</td>
+                            <td class="text-light bg-transparent">{{ user.firstname }}</td>
+                            <td class="bg-transparent">
+                                <a href="{{ path('app_user_edit', { id: user.id }) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <form action="{{ path('app_user_delete', { id: user.id }) }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center text-mute">No users found</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

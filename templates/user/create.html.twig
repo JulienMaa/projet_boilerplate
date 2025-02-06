@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create User{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-2 p-4">
+                    <h1 class="text-center text-light mb-4">Create User</h1>
+
+                    {{ form_start(form) }}
+                    
+                    <div class="mb-3 text-mute">
+                        {{ form_label(form.email, null, {'label_attr': {'class': 'form-label text-light'}}) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control bg-dark text-light'}}) }}
+                    </div>
+
+                    <div class="mb-3 text-mute">
+                        {{ form_label(form.roles, null, {'label_attr': {'class': 'form-label text-light'}}) }}
+                        <div class="form-check">
+                            {% for choice in form.roles %}
+                                <div class="form-check">
+                                    {{ form_widget(choice, {'attr': {'class': 'form-check-input'}}) }}
+                                    {{ form_label(choice, null, {'label_attr': {'class': 'form-check-label text-light'}}) }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="mb-3 text-mute">
+                        {{ form_label(form.firstname, null, {'label_attr': {'class': 'form-label text-light'}}) }}
+                        {{ form_widget(form.firstname, {'attr': {'class': 'form-control bg-dark text-light'}}) }}
+                    </div>
+
+                    <div class="mb-3 text-mute">
+                        {{ form_label(form.lastname, null, {'label_attr': {'class': 'form-label text-light'}}) }}
+                        {{ form_widget(form.lastname, {'attr': {'class': 'form-control bg-dark text-light'}}) }}
+                    </div>
+
+                    {% if form.password is defined %}
+                    <div class="mb-3 text-mute">
+                        {{ form_label(form.password, null, {'label_attr': {'class': 'form-label text-light'}}) }}
+                        {{ form_widget(form.password, {'attr': {'class': 'form-control bg-dark text-light'}}) }}
+                    </div>
+                    {% endif %}
+
+                    <br>
+
+                    <div class="form-group text-center">
+                         {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

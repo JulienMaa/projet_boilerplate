@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-2 p-4">
+                    <h1 class="text-center text-light mb-4">Please sign in</h1>
+
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <div class="mb-3 text-center text-mute">
+                                You are logged in as <strong>{{ app.user.userIdentifier }}</strong>, 
+                                <a href="{{ path('app_logout') }}" class="text-highlight">Logout</a>
+                            </div>
+                        {% endif %}
+
+                        <div class="mb-3 text-mute">
+                            <label for="username" class="form-label">Email</label>
+                            <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control bg-dark text-light" autocomplete="email" required autofocus>
+                        </div>
+
+                        <div class="mb-3 text-mute">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="_password" id="password" class="form-control bg-dark text-light" autocomplete="current-password" required>
+                        </div>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                        <div class="form-group text-center">
+                            <button class="btn button-stylized btn-block" type="submit">
+                                Sign in
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
