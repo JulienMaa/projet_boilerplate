@@ -29,3 +29,12 @@
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+
+# General ignores
+# Ignore the Symfony cache
+/var/cache/
+/var/log/
+
+# Ignore temporary files
+*.log
+*.tmp
