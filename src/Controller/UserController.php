@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/user')]
 final class UserController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
@@ -21,7 +22,7 @@ final class UserController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/user/list', name: 'app_user_list')]
+    #[Route('/list', name: 'app_user_list')]
     public function userList(UserRepository $userRepository): Response
     {
         if (!$this->isGranted(UserVoter::LIST)) {
@@ -36,7 +37,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/create', name: 'app_user_create')]
+    #[Route('/create', name: 'app_user_create')]
     public function userCreate(Request $request): Response
     {
         if (!$this->isGranted(UserVoter::ADD)) {
@@ -61,7 +62,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/edit/{id}', name: 'app_user_edit')]
+    #[Route('/edit/{id}', name: 'app_user_edit')]
     public function userEdit(User $user, Request $request): Response
     {
         if (!$this->isGranted(UserVoter::EDIT, $user)) {
@@ -84,7 +85,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/delete/{id}', name: 'app_user_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function userDelete(User $user): Response
     {
         if (!$this->isGranted(UserVoter::DELETE, $user)) {

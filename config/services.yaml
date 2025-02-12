@@ -33,3 +33,7 @@ services:
         tags:
             - { name: 'security.voter' }
 
+    App\Security\Voter\ClientVoter:
+        tags:
+            - { name: 'security.voter' }
+

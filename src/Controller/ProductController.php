@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
+#[Route('/product')]
 class ProductController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
@@ -23,7 +24,7 @@ class ProductController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/product/list', name: 'app_product_list')]
+    #[Route('/list', name: 'app_product_list')]
     public function index(ProductRepository $productRepository): Response
     {
         $products = $productRepository->findBy([], ['price' => 'DESC']);
@@ -33,7 +34,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/product/new', name: 'app_product_add')]
+    #[Route('/new', name: 'app_product_add')]
     public function add(Request $request, AuthorizationCheckerInterface $authChecker): Response
     {
         $product = new Product();
@@ -59,7 +60,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/product/{id}/edit', name: 'app_product_edit')]
+    #[Route('/edit/{id}', name: 'app_product_edit')]
     public function edit(Product $product, Request $request): Response
     {
         if (!$this->isGranted(ProductVoter::EDIT, $product)) {
@@ -83,7 +84,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/product/{id}/delete', name: 'app_product_delete')]
+    #[Route('/delete/{id}', name: 'app_product_delete')]
     public function delete(Product $product): Response
     {
         if (!$this->isGranted(ProductVoter::DELETE, $product)) {
@@ -98,7 +99,7 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('app_product_list');
     }
 
-    #[Route('/product/export-csv', name: 'app_product_export_csv')]
+    #[Route('/export-csv', name: 'app_product_export_csv')]
     public function exportCsv(CsvExporter $csvExporter): Response
     {
         return $csvExporter->exportToCsv();
