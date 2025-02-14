@@ -63,3 +63,70 @@ Attention : Il vous faut PHP 8.2 pour faire fonctionner ce projet si vous avez P
 - N'hésitez pas à consulter la documentation de Symfony pour plus d'informations sur l'utilisation du framework : https://symfony.com/doc/current/index.html
 
 - Notez comment fonctionne votre projet dans le fichier README.md et mettez à jour ce fichier au fur et à mesure de l'avancement de votre projet pour aider les autres développeurs à comprendre comment fonctionne votre projet.
+
+# Info Supplémentaires
+
+## 1. Fonctionnalités
+
+### Rôles disponibles
+- `ROLE_USER` : Utilisateur standard.
+- `ROLE_ADMIN` : Administrateur.
+- `ROLE_MANAGER` : Gestionnaire.
+
+### Pages disponibles
+- Accueil.
+- Connexion.
+- Création d'un compte.
+- Pages utilisateurs.
+  - Liste des utilisateurs.
+  - Création d'un utilisateur.
+  - Modification d'un utilisateur.
+  - Suppression d'un utilisateur.
+- Pages produits.
+  - Liste des produits.
+  - Création d'un produit.
+  - Modification d'un produit.
+  - Suppression d'un produit.
+  - Requête personnalisée pour afficher les produits triés par prix décroissant.
+  - Exportation CSV des produits.
+  - Importation de produits via un fichier CSV.
+- Pages clients.
+  - Liste des clients.
+  - Création d'un client.
+  - Modification d'un client.
+  - Suppression d'un client.
+
+---
+
+### Commande pour importer des produits depuis un fichier CSV
+```bash
+php bin/console app:import-products-csv
+```
+
+---
+
+### Commande pour ajouter un client en ligne de commande
+```bash
+php bin/console app:add-client
+```
+
+---
+
+## 2. Utils
+
+### Commandes
+
+```bash
+composer require --dev doctrine/doctrine-fixtures-bundle
+composer require fakerphp/faker --dev
+composer require --dev phpunit/phpunit
+
+php bin/console doctrine:database:create --env=test
+php bin/console doctrine:schema:update --force --env=test
+php bin/console doctrine:fixtures:load --env=test
+
+composer update
+```
+
+---
+
